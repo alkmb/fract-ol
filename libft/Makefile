@@ -6,7 +6,7 @@
 #    By: akambou <akambou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 09:50:01 by akambou           #+#    #+#              #
-#    Updated: 2023/11/16 20:54:51 by akambou          ###   ########.fr        #
+#    Updated: 2023/11/20 20:20:19 by akambou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,12 +48,12 @@ $(OBJ_DIR)%.o : %.c Makefile $(INCL)
 
 clean:
 	@echo "Cleaning object files 🔨"
-	@rm -rf $(OBJ_DIR) > /dev/null
+	@rm -rf $(OBJ) $(OBJ_DIR) > /dev/null
 	@echo "Cleaned object files✅."
 
 fclean: clean
 	@echo "Cleaning library 🔨"
-	@rm -rf $(NAME) > /dev/null
+	@rm -rf $(NAME) $(OBJ_DIR) $(OBJ) > /dev/null
 	@echo "Cleaned library✅."
 
 re: fclean all
