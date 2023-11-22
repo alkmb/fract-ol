@@ -6,7 +6,7 @@
 /*   By: akambou <akambou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:45:03 by akambou           #+#    #+#             */
-/*   Updated: 2023/11/22 17:54:20 by akambou          ###   ########.fr       */
+/*   Updated: 2023/11/22 21:23:07 by akambou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ static void	get_set(t_fractol *fractal, int argc, char **argv)
 		fractal->set = JULIA;
 	else if (type_cmp(argv[1], "burned ship", 'b', '2'))
 		fractal->set = TRICORN;
-
+	else
+	{
+		putstr("Usage: ./fractol [fractal] [real] [imaginary]\n");
+		exit(0);
+	}
 	if (fractal->set != JULIA || argc == 2)
 	{
 		fractal->constant_real = -0.766667;

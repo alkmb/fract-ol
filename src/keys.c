@@ -6,12 +6,11 @@
 /*   By: akambou <akambou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 01:00:53 by akambou           #+#    #+#             */
-/*   Updated: 2023/11/22 17:58:07 by akambou          ###   ########.fr       */
+/*   Updated: 2023/11/22 21:14:19 by akambou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
-
 
 int	julia_swap(int x, int y, t_fractol *fractal)
 {
@@ -22,6 +21,7 @@ int	julia_swap(int x, int y, t_fractol *fractal)
 	render(fractal);
 	return (0);
 }
+
 static void	zoom(t_fractol *fractal, double zoom)
 {
 	double	center_real;
