@@ -6,7 +6,7 @@
 /*   By: akambou <akambou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 00:58:25 by akambou           #+#    #+#             */
-/*   Updated: 2023/11/21 06:04:47 by akambou          ###   ########.fr       */
+/*   Updated: 2023/11/22 17:56:29 by akambou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ static int	calc_fractal(t_fractol *fractal, double pr, double pi)
 
 	if (fractal->set == MANDELBROT)
 		nb_iter = mandelbrot(pr, pi);
-	else
+	else if (fractal->set == TRICORN)
+		nb_iter = tricorn(pr, pi);
+	else if (fractal ->set == JULIA)
 		nb_iter = julia(fractal, pr, pi);
 	return (nb_iter);
 }

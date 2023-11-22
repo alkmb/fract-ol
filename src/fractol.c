@@ -6,11 +6,22 @@
 /*   By: akambou <akambou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:45:03 by akambou           #+#    #+#             */
-/*   Updated: 2023/11/21 23:16:56 by akambou          ###   ########.fr       */
+/*   Updated: 2023/11/22 17:54:20 by akambou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
+void	putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i++], 1);
+	}
+}
 
 static int	type_cmp(char *argv, char *str, char c, char n)
 {
@@ -35,6 +46,8 @@ static void	get_set(t_fractol *fractal, int argc, char **argv)
 		fractal->set = MANDELBROT;
 	else if (type_cmp(argv[1], "julia", 'j', '1'))
 		fractal->set = JULIA;
+	else if (type_cmp(argv[1], "burned ship", 'b', '2'))
+		fractal->set = TRICORN;
 
 	if (fractal->set != JULIA || argc == 2)
 	{
@@ -62,6 +75,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 2 || argc > 4)
 	{
+		putstr("Usage: ./fractol [fractal] [real] [imaginary]\n");
 		return (0);
 	}
 	clean_init(&fractal);

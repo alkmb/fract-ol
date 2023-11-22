@@ -5,22 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: akambou <akambou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 22:04:00 by  by akambou       #+#    #+#             */
-/*   Updated: 2023/11/21 22:45:01 by akambou          ###   ########.fr       */
+/*   Created: 2023/11/20 22:00:00 by  by   akamb       #+#    #+#             */
+/*   Updated: 2023/11/22 17:58:34 by akambou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
-
-int	julia_swap(int x, int y, t_fractol *fractal)
-{
-	fractal->constant_real = fractal->min_real \
-	+ (double)x * (fractal->max_real - fractal->min_real) / WIDTH;
-	fractal->constant_imaginary = fractal->max_imaginary \
-	+ (double)y * (fractal->min_imaginary - fractal->max_imaginary) / HEIGHT;
-	render(fractal);
-	return (0);
-}
 
 int	julia(t_fractol *fractal, double z_real, double z_imaginary)
 {
@@ -58,6 +48,28 @@ int	mandelbrot(double c_real, double c_imaginary)
 		temp = 2 * z_real * z_imaginary + c_imaginary;
 		z_real = z_real * z_real - z_imaginary * z_imaginary + c_real;
 		z_imaginary = temp;
+		n++;
+	}
+	return (n);
+}
+
+int	tricorn(double c_real, double c_imaginary)
+{
+	int		n;
+	double	z_real;
+	double	z_imaginary;
+	double	tmp;
+
+	z_real = c_real;
+	z_imaginary = c_imaginary;
+	n = 0;
+	while (n < MAX_ITERATIONS)
+	{
+		if ((z_real * z_real + z_imaginary * z_imaginary) > 4.0)
+			break ;
+		tmp = -2 * z_real * z_imaginary + c_imaginary;
+		z_real = z_real * z_real - z_imaginary * z_imaginary + c_real;
+		z_imaginary = tmp;
 		n++;
 	}
 	return (n);

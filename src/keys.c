@@ -6,12 +6,22 @@
 /*   By: akambou <akambou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 01:00:53 by akambou           #+#    #+#             */
-/*   Updated: 2023/11/21 21:25:08 by akambou          ###   ########.fr       */
+/*   Updated: 2023/11/22 17:58:07 by akambou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
+
+int	julia_swap(int x, int y, t_fractol *fractal)
+{
+	fractal->constant_real = fractal->min_real \
+	+ (double)x * (fractal->max_real - fractal->min_real) / WIDTH;
+	fractal->constant_imaginary = fractal->max_imaginary \
+	+ (double)y * (fractal->min_imaginary - fractal->max_imaginary) / HEIGHT;
+	render(fractal);
+	return (0);
+}
 static void	zoom(t_fractol *fractal, double zoom)
 {
 	double	center_real;

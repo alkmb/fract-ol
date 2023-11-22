@@ -6,7 +6,7 @@
 /*   By: akambou <akambou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 02:55:02 by akambou           #+#    #+#             */
-/*   Updated: 2023/11/21 23:05:08 by akambou          ###   ########.fr       */
+/*   Updated: 2023/11/22 17:57:08 by akambou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 # define FRACTOL_H
 
 # include "../minilibx-linux/mlx.h"
-# include "../printf/includes/ft_printf.h"
 # include "../libft/libft.h"
 # include <math.h>
+# include <unistd.h>
 
 # define WIDTH 1200
 # define HEIGHT 900
-# define MAX_ITERATIONS 100
+# define MAX_ITERATIONS 60
 # define MANDELBROT 1
 # define JULIA 2
+# define TRICORN 3
 
 # define EVENT_CLOSE_BTN 17
 # define KEY_ESC 65307
@@ -64,6 +65,7 @@ void	render(t_fractol *fractal);
 int		close_win(t_fractol *mlx);
 void	kill_win(int error_code, t_fractol *fractal);
 int		mandelbrot(double c_real, double c_imaginary);
+int		tricorn(double c_real, double c_imaginary);
 void	colorcandy(t_fractol *fractal);
 void	color_set(t_fractol *fractal);
 void	colorgreen(t_fractol *fractal);
