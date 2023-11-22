@@ -6,7 +6,7 @@
 /*   By: akambou <akambou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 00:58:25 by akambou           #+#    #+#             */
-/*   Updated: 2023/11/22 17:56:29 by akambou          ###   ########.fr       */
+/*   Updated: 2023/11/22 23:04:11 by akambou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,17 @@ static void	draw_pixel(t_fractol *fractal, int x, int y, int color)
 	fractal->buf[x * 4 + y * WIDTH * 4 + 3] = color >> 24;
 }
 
-static int	calc_fractal(t_fractol *fractal, double pr, double pi)
+static int	calc_fractal(t_fractol *fractal, double real_part, \
+double imaginary_part)
 {
 	int	nb_iter;
 
 	if (fractal->set == MANDELBROT)
-		nb_iter = mandelbrot(pr, pi);
+		nb_iter = mandelbrot(real_part, imaginary_part);
 	else if (fractal->set == TRICORN)
-		nb_iter = tricorn(pr, pi);
+		nb_iter = tricorn(real_part, imaginary_part);
 	else if (fractal ->set == JULIA)
-		nb_iter = julia(fractal, pr, pi);
+		nb_iter = julia(fractal, real_part, imaginary_part);
 	return (nb_iter);
 }
 
@@ -37,24 +38,26 @@ void	render(t_fractol *fractal)
 {
 	int		x;
 	int		y;
-	double	pr;
-	double	pi;
+	double	real_part;
+	double	imaginary_part;
 	int		nb_iter;
 
 	mlx_clear_window(fractal->mlx, fractal->win);
-	y = -1;
-	while (++y < HEIGHT)
+	y = 0;
+	while (y < HEIGHT)
 	{
-		x = -1;
-		while (++x < WIDTH)
+		x = 0;
+		while (x < WIDTH)
 		{
-			pr = fractal->min_real + (double)x \
+			real_part = fractal->min_real + (double)x \
 			* (fractal->max_real - fractal->min_real) / WIDTH;
-			pi = fractal->max_imaginary + (double)y \
+			imaginary_part = fractal->max_imaginary + (double)y \
 			* (fractal->min_imaginary - fractal->max_imaginary) / HEIGHT;
-			nb_iter = calc_fractal(fractal, pr, pi);
+			nb_iter = calc_fractal(fractal, real_part, imaginary_part);
 			draw_pixel(fractal, x, y, fractal->palette[nb_iter]);
+			x++;
 		}
+		y++;
 	}
 	mlx_put_image_to_window(fractal->mlx, fractal->win, fractal->img, 0, 0);
 }

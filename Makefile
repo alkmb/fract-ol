@@ -6,7 +6,7 @@
 #    By: akambou <akambou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 14:45:18 by akambou           #+#    #+#              #
-#    Updated: 2023/11/22 17:22:12 by akambou          ###   ########.fr        #
+#    Updated: 2023/11/22 23:08:48 by akambou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,8 +50,6 @@ $(OBJS): $(OBJ_PATH)
 
 $(OBJ_PATH):
 	@mkdir $(OBJ_PATH)
-	@mkdir $(OBJ_PATH)fractal_sets/
-	@mkdir $(OBJ_PATH)color_schemes/
 
 $(MLX):
 	@echo "Making MiniLibX..."
