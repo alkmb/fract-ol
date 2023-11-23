@@ -6,7 +6,7 @@
 #    By: akambou <akambou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 14:45:18 by akambou           #+#    #+#              #
-#    Updated: 2023/11/22 23:08:48 by akambou          ###   ########.fr        #
+#    Updated: 2023/11/23 02:09:40 by akambou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@ NAME	= fract-ol
 
 CC		= gcc
 CFLAGS	= -Werror -Wextra -Wall
+RM		= rm -rf
 
 MLX_PATH	= minilibx-linux/
 MLX_NAME	= libmlx.a
 MLX			= $(MLX_PATH)$(MLX_NAME)
-
 LIBFT_PATH	= libft/
 LIBFT_NAME	= libft.a
 LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
@@ -35,8 +35,6 @@ SRC			=	fractol.c \
 				render.c \
 				sets.c \
 
-SRCS		= $(addprefix $(SRC_PATH), $(SRC))
-
 OBJ_PATH	= obj/
 OBJ			= $(SRC:.c=.o)
 OBJS		= $(addprefix $(OBJ_PATH), $(OBJ))
@@ -52,30 +50,29 @@ $(OBJ_PATH):
 	@mkdir $(OBJ_PATH)
 
 $(MLX):
-	@echo "Making MiniLibX..."
-	@make -C $(MLX_PATH)
+	@make -sC $(MLX_PATH)
+	@echo -e "\033[0;32mMinilibx created 📚\033[0m"
 
 $(LIBFT):
-	@echo "Making libft..."
-	@make -C $(LIBFT_PATH)
+	@make -sC $(LIBFT_PATH)
 
 $(NAME): $(OBJS)
-	@echo "Compiling fractol..."
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX) $(LIBFT) $(INC) -lXext -lX11 -lm
-	@echo "Fractol ready."
-
-bonus: all
+	@echo -e "\033[0;32mFractol created 📚\033[0m"
 
 clean:
-	@echo "Removing .o object files..."
 	@rm -rf $(OBJ_PATH)
-	@make clean -C $(MLX_PATH)
-	@make clean -C $(LIBFT_PATH)
+	@make clean -sC $(MLX_PATH)
+	@make clean -sC $(LIBFT_PATH)
+	@echo -e "\033[0;31mCleaned Minilibx 🧹\033[0m"
+	@echo -e "\033[0;31mCleaned Libft 🧹\033[0m"
+
+
 
 fclean: clean
-	@echo "Removing fractol..."
-	@rm -f $(NAME)
-	@rm -f $(LIBFT_PATH)$(LIBFT_NAME)
+	@$(RM) $(NAME)
+	@$(RM) $(LIBFT_PATH)$(LIBFT_NAME)
+	@echo -e "\033[0;31mCleaned Fract-ol 🧹\033[0m"
 
 re: fclean all
 
