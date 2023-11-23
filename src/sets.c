@@ -6,7 +6,7 @@
 /*   By: akambou <akambou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 22:00:00 by  by   akamb       #+#    #+#             */
-/*   Updated: 2023/11/22 21:15:19 by akambou          ###   ########.fr       */
+/*   Updated: 2023/11/23 20:37:01 by akambou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	tricorn(double c_real, double c_imaginary)
 	int		n;
 	double	z_real;
 	double	z_imaginary;
-	double	tmp;
+	double	temp;
 
 	z_real = c_real;
 	z_imaginary = c_imaginary;
@@ -67,9 +67,9 @@ int	tricorn(double c_real, double c_imaginary)
 	{
 		if ((z_real * z_real + z_imaginary * z_imaginary) > 4.0)
 			break ;
-		tmp = -2 * z_real * z_imaginary + c_imaginary;
+		temp = -2 * z_real * z_imaginary + c_imaginary;
 		z_real = z_real * z_real - z_imaginary * z_imaginary + c_real;
-		z_imaginary = tmp;
+		z_imaginary = temp;
 		n++;
 	}
 	return (n);

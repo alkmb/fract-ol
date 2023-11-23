@@ -6,7 +6,7 @@
 /*   By: akambou <akambou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:45:03 by akambou           #+#    #+#             */
-/*   Updated: 2023/11/23 19:19:39 by akambou          ###   ########.fr       */
+/*   Updated: 2023/11/23 20:33:01 by akambou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	putstr(char *str)
 	}
 }
 
-static int	type_cmp(char *argv, char *str, char c, char n)
+static int	check_arg(char *argv, char *str, char c, char n)
 {
 	int	i;
 
@@ -42,11 +42,11 @@ static int	type_cmp(char *argv, char *str, char c, char n)
 
 static void	get_set(t_fractol *fractal, int argc, char **argv)
 {
-	if (type_cmp(argv[1], "mandelbrot", 'm', '0'))
+	if (check_arg(argv[1], "mandelbrot", 'm', '0'))
 		fractal->set = MANDELBROT;
-	else if (type_cmp(argv[1], "julia", 'j', '1'))
+	else if (check_arg(argv[1], "julia", 'j', '1'))
 		fractal->set = JULIA;
-	else if (type_cmp(argv[1], "burnedship", 'b', '2'))
+	else if (check_arg(argv[1], "burnedship", 'b', '2'))
 		fractal->set = TRICORN;
 	else
 	{
