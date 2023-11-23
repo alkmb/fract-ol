@@ -6,21 +6,11 @@
 /*   By: akambou <akambou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 01:00:53 by akambou           #+#    #+#             */
-/*   Updated: 2023/11/22 21:14:19 by akambou          ###   ########.fr       */
+/*   Updated: 2023/11/23 19:33:02 by akambou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
-
-int	julia_swap(int x, int y, t_fractol *fractal)
-{
-	fractal->constant_real = fractal->min_real \
-	+ (double)x * (fractal->max_real - fractal->min_real) / WIDTH;
-	fractal->constant_imaginary = fractal->max_imaginary \
-	+ (double)y * (fractal->min_imaginary - fractal->max_imaginary) / HEIGHT;
-	render(fractal);
-	return (0);
-}
 
 static void	zoom(t_fractol *fractal, double zoom)
 {
@@ -107,11 +97,6 @@ int	mouse_key(int keycode, int x, int y, t_fractol *mlx)
 	}
 	else if (keycode == MOUSE_WHEEL_DOWN)
 		zoom(mlx, 2);
-	else if (keycode == MOUSE_BTN)
-	{
-		if (mlx->set == JULIA)
-			julia_swap(x, y, mlx);
-	}
 	else
 		return (0);
 	render(mlx);
