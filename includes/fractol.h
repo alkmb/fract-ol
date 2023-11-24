@@ -6,7 +6,7 @@
 /*   By: akambou <akambou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 02:55:02 by akambou           #+#    #+#             */
-/*   Updated: 2023/11/24 00:59:30 by akambou          ###   ########.fr       */
+/*   Updated: 2023/11/24 04:43:52 by akambou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 # define WIDTH 1200
 # define HEIGHT 900
-# define MAX_ITERATIONS 60
+# define MAX_ITERATIONS 100
 # define MANDELBROT 1
 # define JULIA 2
 # define TRICORN 3
