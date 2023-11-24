@@ -6,7 +6,7 @@
 /*   By: akambou <akambou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 02:55:02 by akambou           #+#    #+#             */
-/*   Updated: 2023/11/23 02:02:02 by akambou          ###   ########.fr       */
+/*   Updated: 2023/11/24 00:59:30 by akambou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FRACTOL_H
 
 # include "../minilibx-linux/mlx.h"
+# include "../minilibx-macos/mlx.h"
 # include "../libft/includes/libft.h"
 # include <math.h>
 

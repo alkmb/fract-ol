@@ -6,7 +6,7 @@
 #    By: akambou <akambou@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 14:45:18 by akambou           #+#    #+#              #
-#    Updated: 2023/11/23 02:09:40 by akambou          ###   ########.fr        #
+#    Updated: 2023/11/24 01:08:31 by akambou          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,11 @@ CFLAGS	= -Werror -Wextra -Wall
 RM		= rm -rf
 
 MLX_PATH	= minilibx-linux/
+#MLX_PATH	= minilibx-macos/
+
 MLX_NAME	= libmlx.a
 MLX			= $(MLX_PATH)$(MLX_NAME)
+
 LIBFT_PATH	= libft/
 LIBFT_NAME	= libft.a
 LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
@@ -58,6 +61,11 @@ $(LIBFT):
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX) $(LIBFT) $(INC) -lXext -lX11 -lm
+
+#	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) L$(MLX) \
+	-lmlx -framework OpenGL -framework AppKit $(LIBFT) $(INC)
+
+	-lmlx -framework OpenGL -framework AppKit
 	@echo -e "\033[0;32mFractol created 📚\033[0m"
 
 clean:
