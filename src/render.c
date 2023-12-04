@@ -6,7 +6,7 @@
 /*   By: akambou <akambou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 00:58:25 by akambou           #+#    #+#             */
-/*   Updated: 2023/11/22 23:04:11 by akambou          ###   ########.fr       */
+/*   Updated: 2023/11/25 04:46:39 by akambou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ double imaginary_part)
 		nb_iter = mandelbrot(real_part, imaginary_part);
 	else if (fractal->set == TRICORN)
 		nb_iter = tricorn(real_part, imaginary_part);
-	else if (fractal ->set == JULIA)
+	else
 		nb_iter = julia(fractal, real_part, imaginary_part);
 	return (nb_iter);
 }
@@ -73,11 +73,7 @@ void	kill_win(int exit_code, t_fractol *fractal)
 	if (fractal->win && fractal->mlx)
 		mlx_destroy_window(fractal->mlx, fractal->win);
 	if (fractal->mlx)
-	{
-		mlx_loop_end(fractal->mlx);
-		mlx_destroy_display(fractal->mlx);
 		free(fractal->mlx);
-	}
 	exit(exit_code);
 }
 
