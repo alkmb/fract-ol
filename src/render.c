@@ -6,7 +6,7 @@
 /*   By: akambou <akambou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 00:58:25 by akambou           #+#    #+#             */
-/*   Updated: 2023/11/25 04:46:39 by akambou          ###   ########.fr       */
+/*   Updated: 2023/12/09 21:01:56 by akambou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,10 @@ void	kill_win(int exit_code, t_fractol *fractal)
 	if (fractal->win && fractal->mlx)
 		mlx_destroy_window(fractal->mlx, fractal->win);
 	if (fractal->mlx)
+	{
+		clean_init(fractal);
 		free(fractal->mlx);
+	}
 	exit(exit_code);
 }
 
